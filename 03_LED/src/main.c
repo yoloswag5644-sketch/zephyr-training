@@ -11,8 +11,8 @@
 #define SLEEP_TIME_MS   1000
 
 /* The devicetree node identifier for the "led0" alias. */
-#define LED0_NODE DT_ALIAS(led0)
-
+// #define LED0_NODE DT_ALIAS(training_led)
+#define LED0_NODE DT_NODELABEL(led4_subnode_label)
 /*
  * A build error on this line means your board is unsupported.
  * See the sample documentation for information on how to fix this.
