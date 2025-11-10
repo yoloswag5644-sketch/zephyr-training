@@ -19,6 +19,12 @@
  */
 static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(LED0_NODE, gpios);
 
+static void my_timer_handler(struct k_timer *dummy) {
+	gpio_pin_toggle_dt(&led);
+}
+
+K_TIMER_DEFINE(my_timer, my_timer_handler, NULL);
+
 int main(void)
 {
 	int ret;
@@ -31,12 +37,9 @@ int main(void)
 	if (ret < 0) {
 		return -EIO;
 	}
+	k_timer_start(&my_timer, K_MSEC(200), K_MSEC(200));
 
-	while (1) {
-		ret = gpio_pin_toggle_dt(&led);
-		if (ret < 0) {
-			return -EIO;
-		}
+	while(true) {
 		k_msleep(SLEEP_TIME_MS);
 	}
 }
