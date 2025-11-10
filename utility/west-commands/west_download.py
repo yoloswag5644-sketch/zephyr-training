@@ -85,7 +85,7 @@ class Download(WestCommand):
 
         if board_name == "nrf7002dk/nrf5340/cpuapp":
             bin_name = 'zephyr.hex'
-        elif board_name == "nrf9160dk/nrf9160/ns":
+        elif board_name in ["nrf9160dk/nrf9160/ns", "nrf9151dk/nrf9151/ns"]:
             bin_name = 'merged.hex'
         else:
             log.die("Don't know which binary to move for this board:", board_name)
