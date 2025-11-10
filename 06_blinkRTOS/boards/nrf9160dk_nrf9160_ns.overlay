@@ -1,0 +1,14 @@
+/ {
+	aliases {
+		training-led = &led2_subnode_label;
+	};
+
+
+	led_childnode: led_childnode_path {
+		compatible = "gpio-leds";
+
+		led2_subnode_label: led2_path {
+			gpios = <&gpio0 3 GPIO_ACTIVE_HIGH>;
+	       	};
+	};
+};
